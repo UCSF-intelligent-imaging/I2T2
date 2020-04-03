@@ -1,5 +1,6 @@
-# Intelligent Imaging Tools and Tasks
-> Series of useful tools for Medical Imaging Handling.
+# I2T2: Intelligent Imaging Tools and Tasks
+> Library of useful tools for Medical Imaging Handling
+
 
 Instructions for installation and usage can be found below.
 

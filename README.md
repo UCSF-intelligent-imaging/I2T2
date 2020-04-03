@@ -1,4 +1,23 @@
-# nbdev template
+# Intelligent Imaging Tools and Tasks
+> Series of useful tools for Medical Imaging Handling.
 
-Use this template to more easily create your nbdev project.
+Instructions for installation and usage can be found below.
+
+## Install
+
+`pip install i2t2`
+
+## How to use
+
+Fill me in please! Don't forget code examples:
+
+```
+1+1
+```
+
+
+
+
+    2
+
 

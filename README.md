@@ -2,15 +2,49 @@
 > Library of useful tools for Medical Imaging Handling
 
 
-Instructions for installation and usage can be found below.
+Instructions for installation and usage examples can be found below.
 
 ## Install
 
-`pip install I2T2`
+There are two ways of installing I2T2 and its dependencies:
+
+1. Without explicit github download, using `pip`:
+
+```python
+conda create -n I2T2 python=3.7
+conda activate I2T2
+pip install I2T2
+conda install -c conda-forge gdcm
+```
+
+2. With github download
+```python
+git clone https://github.com/UCSF-intelligent-imaging/I2T2/
+cd I2T2/
+conda env create -f environment.yml
+```
+
+## Test your installation
+
+```python
+conda activate I2T2
+python
+>>> import I2T4
+```
+
+`I2T2` uses GDCM to uncompress some DICOMs.
+
+Make sure to have GDCM installed in your conda environment via `conda install -c conda-forge gdcm`
+
+```python
+conda activate I2T2
+python
+>>> import gdcm
+```
 
 ## How to use
 
-```python
+```
 # example usage:
 from I2T2.data.manipulate import *
 import matplotlib.pyplot as plt
@@ -25,21 +59,5 @@ except:
 ```
 
 
-![png](docs/images/output_4_0.png)
-
-
-`dcm2array` uses pydicom to load the data from DICOM files. If DICOM are compressed, GDCM is used.
-
-Make sure to have GDCM installed in your conda environment via `conda install -c conda-forge gdcm`
-
-```python
-#test
-try:
-    import gdcm
-    print('Successfully imported GDCM')
-except ImportError:
-    print('Could not import GDCM')
-```
-
-    Successfully imported GDCM
+![png](docs/images/output_8_0.png)
 

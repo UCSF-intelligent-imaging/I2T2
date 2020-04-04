@@ -9,28 +9,9 @@ import pandas as pd
 import pydicom
 
 # Cell
-def dcm2array(path_to_dicom_dir, sort_by_slice_location=True):
-    """
-    Transform DICOM data into numpy array.
-
-    Parameters
-    ----------
-    path_to_dicom_dir : str
-        path to folder containing all dicom files for *one patient*
-    sort_by_slice_location : bool
-        if True, returning array will be ordered by slice location
-
-    Returns
-    -------
-    pixel_array : arr
-        3D array containing pixel data from dicom files
-
-    Notes
-    -------
-    This function will require GDCM to be already installed
-    if the DICOM is compressed
-
-    """
+def dcm2array(path_to_dicom_dir:Param("Path to folder containing all dicom files for one patient", str)=None,
+              sort_by_slice_location:Param("Whether to return array ordered by slice location", bool)=True):
+    "Transform DICOM data into numpy array."
     try:
         import gdcm
 

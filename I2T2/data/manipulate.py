@@ -10,9 +10,15 @@ import pandas as pd
 import pydicom
 
 # Cell
-def dcm2array(path_to_dicom_dir:Param("Path to folder containing all dicom files for one patient", str)=None,
-              sort_by_slice_location:Param("Whether to return array ordered by slice location", bool)=True):
-    "Transform DICOM data into numpy array."
+def dcm2array(path_to_dicom_dir=None,
+              sort_by_slice_location=True):
+    """
+    Transform DICOM data into numpy array.
+    path_to_dicom_dir : str
+        Path to folder containing all dicom files for one patient
+    sort_by_slice_location : bool
+        Whether to return array ordered by slice location
+    """
     try:
         import gdcm
 

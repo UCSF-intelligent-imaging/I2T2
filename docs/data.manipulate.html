@@ -88,9 +88,13 @@ description: "Library of useful tools for Medical Imaging Handling"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="dcm2array" class="doc_header"><code>dcm2array</code><a href="https://github.com/UCSF-intelligent-imaging/I2T2/tree/master/I2T2/data/manipulate.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dcm2array</code>(<strong><code>path_to_dicom_dir</code></strong>:"Path to folder containing all dicom files for one patient"=<em><code>None</code></em>, <strong><code>sort_by_slice_location</code></strong>:"Whether to return array ordered by slice location"=<em><code>True</code></em>)</p>
+<h4 id="dcm2array" class="doc_header"><code>dcm2array</code><a href="https://github.com/UCSF-intelligent-imaging/I2T2/tree/master/I2T2/data/manipulate.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dcm2array</code>(<strong><code>path_to_dicom_dir</code></strong>=<em><code>None</code></em>, <strong><code>sort_by_slice_location</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
-<p>Transform DICOM data into numpy array.</p>
+<p>Transform DICOM data into numpy array.
+path_to_dicom_dir : str
+    Path to folder containing all dicom files for one patient
+sort_by_slice_location : bool
+    Whether to return array ordered by slice location</p>
 
 </div>
 
@@ -102,6 +106,14 @@ description: "Library of useful tools for Medical Imaging Handling"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="/I2T2/data.manipulate#dcm2array"><code>dcm2array</code></a> takes a path to one DICOM series (patient).</p>
+<p>See the example below:</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">

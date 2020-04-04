@@ -2,7 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"dcm2array": "00_data.manipulate.ipynb"}
 
 modules = ["data/manipulate.py"]
 

@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Intelligent Imaging Tools and Tasks
+      title: Data.Manipulate
       url: /data.manipulate
     output: web
     title: I2T2

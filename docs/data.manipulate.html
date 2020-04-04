@@ -1,12 +1,12 @@
 ---
 
-title: Intelligent Imaging Tools and Tasks
+title: Data.Manipulate
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Library of useful tools for Medical Imaging Handling"
-description: "Library of useful tools for Medical Imaging Handling"
+summary: "IO tools for manipulating medical images"
+description: "IO tools for manipulating medical images"
 ---
 <!--
 
@@ -90,16 +90,13 @@ description: "Library of useful tools for Medical Imaging Handling"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="dcm2array" class="doc_header"><code>dcm2array</code><a href="https://github.com/UCSF-intelligent-imaging/I2T2/tree/master/I2T2/data/manipulate.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dcm2array</code>(<strong><code>path_to_dicom_dir</code></strong>=<em><code>None</code></em>, <strong><code>sort_by_slice_location</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
-<h2 id="Transform-DICOM-data-into-numpy-array.">Transform DICOM data into numpy array.<a class="anchor-link" href="#Transform-DICOM-data-into-numpy-array."> </a></h2><p>path_to_dicom_dir : str</p>
-
-<pre><code>Path to folder containing all dicom files for one patient
-</code></pre>
-<hr>
-<p>sort_by_slice_location : bool</p>
-
-<pre><code>Whether to return array ordered by slice location
-</code></pre>
-<hr>
+<p>Transform DICOM data into numpy array.</p>
+<p>Attributes:
+    path_to_dicom_dir (str): Path to folder containing all dicom files for one patient
+    sort_by_slice_location (bool): Whether to return array ordered by slice location</p>
+<p>Returns:
+    pixel_array (arr): Array of pixel data
+        this is a test</p>
 
 </div>
 

@@ -31,3 +31,15 @@ except:
 `dcm2array` uses pydicom to load the data from DICOM files. If DICOM are compressed, GDCM is used.
 
 Make sure to have GDCM installed in your conda environment via `conda install -c conda-forge gdcm`
+
+```python
+#test
+try:
+    import gdcm
+    print('Successfully imported GDCM')
+except ImportError:
+    print('Could not import GDCM')
+```
+
+    Successfully imported GDCM
+

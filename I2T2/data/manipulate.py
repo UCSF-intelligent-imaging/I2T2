@@ -20,7 +20,6 @@ def dcm2array(path_to_dicom_dir=None, sort_by_slice_location=True):
 
     Returns:
         pixel_array (arr): Array of pixel data
-    ---
     """
     try:
         import gdcm

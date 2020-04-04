@@ -6,9 +6,11 @@ Instructions for installation and usage examples can be found below.
 
 ## Install
 
+It's highly recommended you install `I2T2` and its dependencies in a virtual environment (conda or others), so that you don't interfere with system-wide python packages.
+
 There are two ways of installing I2T2 and its dependencies:
 
-1. Without explicit github download, using `pip`:
+1. Using `pip`:
 
 ```python
 conda create -n I2T2 python=3.7
@@ -17,7 +19,8 @@ pip install I2T2
 conda install -c conda-forge gdcm
 ```
 
-2. With github download
+2. Via github download:
+
 ```python
 git clone https://github.com/UCSF-intelligent-imaging/I2T2/
 cd I2T2/
@@ -42,9 +45,9 @@ python
 >>> import gdcm
 ```
 
-## How to use
+## Using I2T2
 
-```
+```python
 # example usage:
 from I2T2.data.manipulate import *
 import matplotlib.pyplot as plt

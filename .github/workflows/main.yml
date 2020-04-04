@@ -9,6 +9,17 @@ jobs:
       with:
         python-version: '3.7'
         architecture: 'x64'
+    - uses: goanpeca/setup-miniconda@enh/channels
+      with:
+        activate-environment: I2T2
+        python-version: 3.7
+        channels: conda-forge
+    - shell: bash -l {0}
+      run: |
+        conda info
+        conda list
+        conda config --show-sources
+        conda config --show
     - name: Install the library
       run: |
         pip install nbdev jupyter

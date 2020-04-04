@@ -10,7 +10,7 @@ Instructions for installation and usage can be found below.
 
 ## How to use
 
-```
+```python
 # example usage:
 import matplotlib.pyplot as plt
 data_path = '../../../3_data/GE/Exam3038_Series5/'

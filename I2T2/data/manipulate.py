@@ -11,6 +11,7 @@ import pydicom
 # Cell
 def dcm2array(path_to_dicom_dir, sort_by_slice_location=True):
     """
+    Transform DICOM data into numpy array.
 
     Parameters
     ----------
@@ -47,9 +48,11 @@ def dcm2array(path_to_dicom_dir, sort_by_slice_location=True):
         print('Traditional dcm reading did not working.')
         print('Attempting to read uncompressed data')
         print('Making temporary directory')
-        temp_dir = './dcm2array_tmpdir/'
+        temp_dir = '../data/dcm2array_tmpdir2/'
 
         #create temp dirs
+#         if os.path.isdir(temp_dir):
+#             os.remove(temp_dir)
         os.mkdir(temp_dir)
 
         df['tempfname'] = temp_dir + df['filename']
@@ -64,7 +67,7 @@ def dcm2array(path_to_dicom_dir, sort_by_slice_location=True):
         tempo = df['DS'][0]
         im_at = tempo.AcquisitionMatrix, tempo.PixelSpacing
         #get rid of temp dirs
-        [os.remove(x) for x in df['tempfname']]
+#         [os.remove(x) for x in df['tempfname']]
 
     if sort_by_slice_location == True:
         df = df.sort_values(by=['SliceLoc'])

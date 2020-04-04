@@ -20,7 +20,7 @@ jobs:
         conda list
         conda config --show-sources
         conda config --show
-        conda install gdcm
+        conda install -c conda-forge gdcm
     - name: Install the library
       run: |
         pip install nbdev jupyter

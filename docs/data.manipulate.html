@@ -91,11 +91,15 @@ description: "IO tools for manipulating medical images"
 <h4 id="dcm2array" class="doc_header"><code>dcm2array</code><a href="https://github.com/UCSF-intelligent-imaging/I2T2/tree/master/I2T2/data/manipulate.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dcm2array</code>(<strong><code>path_to_dicom_dir</code></strong>=<em><code>None</code></em>, <strong><code>sort_by_slice_location</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Transform DICOM data into numpy array.</p>
-<p>Attributes:
-        path_to_dicom_dir (str): Path to folder containing all dicom files for one patient
-        sort_by_slice_location (bool): Whether to return array ordered by slice location</p>
-<p>Returns:
-        pixel_array (arr): Array of pixel data</p>
+<p><strong>Attributes:</strong></p>
+
+<pre><code>    path_to_dicom_dir (str): Path to folder containing all dicom files for one patient
+    sort_by_slice_location (bool): Whether to return array ordered by slice location
+
+</code></pre>
+<p><strong>Returns:</strong></p>
+
+<pre><code>    pixel_array (arr): Array of pixel data</code></pre>
 
 </div>
 

@@ -14,11 +14,11 @@ def dcm2array(path_to_dicom_dir=None, sort_by_slice_location=True):
     """
     Transform DICOM data into numpy array.
 
-    Attributes:
+    **Attributes:** \n
             path_to_dicom_dir (str): Path to folder containing all dicom files for one patient
             sort_by_slice_location (bool): Whether to return array ordered by slice location
 
-    Returns:
+    **Returns:** \n
             pixel_array (arr): Array of pixel data
     """
     try:

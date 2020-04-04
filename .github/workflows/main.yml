@@ -9,7 +9,7 @@ jobs:
       with:
         python-version: '3.7'
         architecture: 'x64'
-    - uses: goanpeca/setup-miniconda@enh/channels
+    - uses: goanpeca/setup-miniconda@v1.0.2
       with:
         activate-environment: I2T2
         python-version: 3.7

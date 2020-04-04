@@ -27,50 +27,31 @@ def dcm2array(path_to_dicom_dir, sort_by_slice_location=True):
 
     Notes
     -------
-    This function will initially try to read the pixel data directly
-    using pydicom.dcmread. If this fails, it will then attempt to
-    decompress the data and then read the jpeg files.
+    This function will require GDCM to be already installed
+    if the DICOM is compressed
 
     """
-
-    df = pd.DataFrame()
-    df['filename']= os.listdir(path_to_dicom_dir)
-    df['pathname']= path_to_dicom_dir + df['filename']
-
     try:
+        import gdcm
+
+    except ImportError:
+        print("GDCM needs to be installed.")
+        print("Try: conda install -c conda-forge gdcm")
+
+    else:
+        df = pd.DataFrame()
+        df['filename']= os.listdir(path_to_dicom_dir)
+        df['pathname']= path_to_dicom_dir + df['filename']
+
         df['DS']=[pydicom.dcmread(x) for x in df['pathname']]
         df['SOPInstanceUID'] = [x.SOPInstanceUID for x in df['DS']]
         df['SliceLoc'] = [x.InstanceNumber for x in df['DS']]
         df['Pixels'] = [x.pixel_array for x in df['DS']]
         tempo = df['DS'][0]
         im_at = tempo.AcquisitionMatrix, tempo.PixelSpacing
-    except:
-        print('Traditional dcm reading did not working.')
-        print('Attempting to read uncompressed data')
-        print('Making temporary directory')
-        temp_dir = '../data/dcm2array_tmpdir2/'
 
-        #create temp dirs
-#         if os.path.isdir(temp_dir):
-#             os.remove(temp_dir)
-        os.mkdir(temp_dir)
+        if sort_by_slice_location == True:
+            df = df.sort_values(by=['SliceLoc'])
+        pixel_array = np.dstack(np.asarray(df['Pixels']))
 
-        df['tempfname'] = temp_dir + df['filename']
-
-        FNULL = open(os.devnull, 'w')
-        [subprocess.run('dcmdjpeg -v {} {}'.format(x[1], df['tempfname'][x[0]]), shell=True, stdout=FNULL, stderr=subprocess.STDOUT) for x in enumerate(df['pathname'])]
-
-        df['DS']=[pydicom.dcmread(x) for x in df['tempfname']]
-        df['SOPInstanceUID'] = [x.SOPInstanceUID for x in df['DS']]
-        df['SliceLoc'] = [x.InstanceNumber for x in df['DS']]
-        df['Pixels'] = [x.pixel_array for x in df['DS']]
-        tempo = df['DS'][0]
-        im_at = tempo.AcquisitionMatrix, tempo.PixelSpacing
-        #get rid of temp dirs
-#         [os.remove(x) for x in df['tempfname']]
-
-    if sort_by_slice_location == True:
-        df = df.sort_values(by=['SliceLoc'])
-    pixel_array = np.dstack(np.asarray(df['Pixels']))
-
-    return pixel_array
+        return pixel_array

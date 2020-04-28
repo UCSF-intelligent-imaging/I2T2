@@ -4,7 +4,9 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"dcm2array": "00_data.manipulate.ipynb",
          "crop": "00_data.manipulate.ipynb",
-         "pad": "00_data.manipulate.ipynb"}
+         "pad": "00_data.manipulate.ipynb",
+         "resample": "00_data.manipulate.ipynb",
+         "resample_by": "00_data.manipulate.ipynb"}
 
 modules = ["data/manipulate.py"]
 

@@ -1,7 +1,7 @@
-repository: Pablo Damasceno/i2d2
+repository: Pablo Damasceno/I2T2
 output: web
-topnav_title: i2d2
-site_title: i2d2
+topnav_title: I2T2
+site_title: I2T2
 company_name: UCSF
 description: Suite of useful tools for manipulating medical images.
 # Set to false to disable KaTeX math
@@ -20,7 +20,7 @@ exclude:
   - .idea/
   - .gitignore
   - vendor
- 
+
 exclude: [vendor]
 
 highlighter: rouge

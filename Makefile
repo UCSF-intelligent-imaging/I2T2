@@ -1,10 +1,10 @@
 SRC = $(wildcard ./*.ipynb)
 
-all: i2d2 docs
+all: I2T2 docs
 
-i2d2: $(SRC)
+I2T2: $(SRC)
 	nbdev_build_lib
-	touch i2d2
+	touch I2T2
 
 docs_serve: docs
 	cd docs && bundle exec jekyll serve

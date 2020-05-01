@@ -2,7 +2,7 @@ topnav:
 - title: Topnav
   items:
     - title: GitHub
-      external_url: https://github.com/Pablo Damasceno/i2d2
+      external_url: https://github.com/UCSF-intelligent-imaging/I2T2
 
 #Topnav dropdowns
 topnav_dropdowns:

@@ -13,7 +13,7 @@ entries:
       title: Data.Manipulate
       url: /data.manipulate
     - output: web,pdf
-      title: Title
+      title: Data.Load
       url: /data.load
     output: web
     title: I2T2

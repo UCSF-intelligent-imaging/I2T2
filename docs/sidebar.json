@@ -2,6 +2,6 @@
   "I2T2": {
     "Overview": "/",
     "Data.Manipulate": "/data.manipulate",
-    "Title": "/data.load"
+    "Data.Load": "/data.load"
   }
 }

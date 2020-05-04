@@ -1,0 +1,17 @@
+CONTRIBUTING.md
+LICENSE
+MANIFEST.in
+README.md
+settings.ini
+setup.py
+I2T2/__init__.py
+I2T2/_nbdev.py
+I2T2.egg-info/PKG-INFO
+I2T2.egg-info/SOURCES.txt
+I2T2.egg-info/dependency_links.txt
+I2T2.egg-info/entry_points.txt
+I2T2.egg-info/not-zip-safe
+I2T2.egg-info/requires.txt
+I2T2.egg-info/top_level.txt
+I2T2/data/__init__.py
+I2T2/data/manipulate.py

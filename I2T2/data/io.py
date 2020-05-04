@@ -13,6 +13,7 @@ import numpy as np
 import os
 import pandas as pd
 import pydicom
+import gdcm
 
 # Cell
 def load_dcm(path_to_dicom_dir=None, sort_by_slice_location=True):

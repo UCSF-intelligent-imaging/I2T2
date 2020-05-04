@@ -2,13 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"dcm2array": "00_data.manipulate.ipynb",
-         "crop": "00_data.manipulate.ipynb",
+index = {"crop": "00_data.manipulate.ipynb",
          "pad": "00_data.manipulate.ipynb",
          "resample": "00_data.manipulate.ipynb",
-         "resample_by": "00_data.manipulate.ipynb"}
+         "resample_by": "00_data.manipulate.ipynb",
+         "load_dcm": "01_data.load.ipynb",
+         "load_h5": "01_data.load.ipynb"}
 
-modules = ["data/manipulate.py"]
+modules = ["data/manipulate.py",
+           "data/io.py"]
 
 doc_url = "https://UCSF-intelligent-imaging.github.io/I2T2/"
 

@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: Data.Manipulate
       url: /data.manipulate
+    - output: web,pdf
+      title: Title
+      url: /data.load
     output: web
     title: I2T2
   output: web

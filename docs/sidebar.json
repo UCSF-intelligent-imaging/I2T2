@@ -1,10 +1,7 @@
 {
-  "Notebook": {
-    "Export to modules": "/export",
-    "Convert to html": "/export2html",
-    "Show doc": "/showdoc",
-    "Test functions": "/test",
-    "Core functions": "/core",
-    "Command line functions": "/cli"
+  "I2T2": {
+    "Overview": "/",
+    "I2T2.io": "/io",
+    "I2T2.manipulate": "/core"
   }
 }

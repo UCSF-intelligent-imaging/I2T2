@@ -12,6 +12,7 @@ jobs:
     - uses: goanpeca/setup-miniconda@v1.0.2
       with:
         activate-environment: I2T2
+        environment-file: environment.yml
         python-version: 3.7
         channels: conda-forge
     - shell: bash -l {0}
@@ -23,7 +24,6 @@ jobs:
         conda install -c conda-forge gdcm
     - name: Install the library
       run: |
-        source activate I2T2
         pip install nbdev jupyter
         pip install -e .
     - name: Read all notebooks

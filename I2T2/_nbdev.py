@@ -2,9 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_io.ipynb"}
+index = {"load_dcm": "00_io.ipynb",
+         "load_h5": "00_io.ipynb",
+         "crop": "01_manipulate.ipynb",
+         "pad": "01_manipulate.ipynb",
+         "resample": "01_manipulate.ipynb",
+         "resample_by": "01_manipulate.ipynb"}
 
-modules = ["io.py"]
+modules = ["io.py",
+           "manipulate.py"]
 
 doc_url = "https://UCSF-intelligent-imaging.github.io/I2T2/"
 

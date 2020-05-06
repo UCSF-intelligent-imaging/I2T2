@@ -5,10 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
       with:
-        python-version: '3.6'
-        architecture: 'x64'
+        python-version: 3.8
+    - uses: s-weigand/setup-conda@v1
+      with:
+        activate-conda: true
+    - run: conda --version
+    - run: which python
+    - shell: bash -l {0}
+      run: |
+        conda info
+        conda list
+        conda config --show-sources
+        conda config --show
+        conda install -c conda-forge gdcm
     - name: Install the library
       run: |
         pip install nbdev jupyter

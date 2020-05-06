@@ -12,8 +12,8 @@ index = {"load_dcm": "00_io.ipynb",
 modules = ["io.py",
            "manipulate.py"]
 
-doc_url = "https://UCSF-intelligent-imaging.github.io/I2T2/"
+doc_url = "https://pfdamasceno.github.io/I2T2/"
 
-git_url = "https://github.com/UCSF-intelligent-imaging/I2T2/tree/master/"
+git_url = "https://github.com/pfdamasceno/I2T2/tree/master/"
 
 def custom_doc_links(name): return None

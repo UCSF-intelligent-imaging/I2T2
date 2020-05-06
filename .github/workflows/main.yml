@@ -9,6 +9,18 @@ jobs:
       with:
         python-version: '3.6'
         architecture: 'x64'
+    - uses: goanpeca/setup-miniconda@v1.0.2
+      with:
+        activate-environment: I2T2
+        python-version: 3.7
+        channels: conda-forge
+    - shell: bash -l {0}
+      run: |
+        conda info
+        conda list
+        conda config --show-sources
+        conda config --show
+        conda install -c conda-forge gdcm
     - name: Install the library
       run: |
         pip install nbdev jupyter

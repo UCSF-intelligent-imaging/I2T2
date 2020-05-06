@@ -52,7 +52,7 @@ python
 
 ## Using I2T2
 
-```python
+```
 # example usage:
 from I2T2.manipulate import *
 import matplotlib.pyplot as plt

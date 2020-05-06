@@ -12,7 +12,6 @@ jobs:
     - uses: goanpeca/setup-miniconda@v1.0.2
       with:
         activate-environment: I2T2
-        environment-file: environment.yml
         python-version: 3.7
         channels: conda-forge
     - shell: bash -l {0}

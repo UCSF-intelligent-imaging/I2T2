@@ -14,7 +14,7 @@ entries:
       url: /io
     - output: web,pdf
       title: I2T2.manipulate
-      url: /core
+      url: /manipulate
     output: web
     title: I2T2
   output: web

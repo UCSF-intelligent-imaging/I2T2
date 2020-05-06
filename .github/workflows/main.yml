@@ -5,11 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: goanpeca/setup-miniconda@v1.0.2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
       with:
-        activate-environment: I2T2
-        python-version: 3.7
-        channels: conda-forge
+        python-version: 3.8
+    - uses: s-weigand/setup-conda@v1
+      with:
+        activate-conda: true
+    - run: conda --version
+    - run: which python
     - shell: bash -l {0}
       run: |
         conda info

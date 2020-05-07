@@ -3,7 +3,7 @@
 __all__ = ['load_dcm', 'load_h5']
 
 # Cell
-from fastscript import call_parse,Param,bool_arg
+from fastscript import call_parse, Param, bool_arg
 from scipy import ndimage
 
 import h5py

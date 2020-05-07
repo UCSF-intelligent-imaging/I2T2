@@ -3,7 +3,7 @@
 __all__ = ['crop', 'pad', 'resample', 'resample_by']
 
 # Cell
-from fastscript import call_parse,Param,bool_arg
+from fastscript import call_parse, Param, bool_arg
 from scipy import ndimage
 
 import math
@@ -28,34 +28,36 @@ def crop(image_array, final_dims_in_pixels, zero_fill_mode=False):
     """
 
     dims = len(final_dims_in_pixels)
-    original_dims_in_pixels = [image_array.shape[d] for d in range(len(image_array.shape))]
+    original_dims_in_pixels = [image_array.shape[d]
+                               for d in range(len(image_array.shape))]
 
     # test if input and output dimensions match
     if dims != len(original_dims_in_pixels):
         raise ValueError("Dimensions of the input (" + str(len(image_array.shape)) +
-                        ") do not match those of output (" + str(len(final_dims_in_pixels))+ ")")
+                         ") do not match those of output (" + str(len(final_dims_in_pixels)) + ")")
 
     # test if desired final image is smaller than original
     if any(final_dims_in_pixels[d] > original_dims_in_pixels[d] for d in range(dims)):
-        raise ValueError("Final dimensions are larger than original. Did you mean to `pad`?")
-
+        raise ValueError(
+            "Final dimensions are larger than original. Did you mean to `pad`?")
 
     cropped_image_array = np.zeros(image_array.shape)
     new_first_pixel = [0 for i in range(dims)]
     new_last_pixel = [0 for i in range(dims)]
 
     for dim in range(dims):
-        new_first_pixel[dim] = int(math.floor((original_dims_in_pixels[dim] - final_dims_in_pixels[dim]) / 2))
+        new_first_pixel[dim] = int(math.floor(
+            (original_dims_in_pixels[dim] - final_dims_in_pixels[dim]) / 2))
         new_last_pixel[dim] = new_first_pixel[dim] + final_dims_in_pixels[dim]
 
-    #for 2D:
+    # for 2D:
     if dims == 2:
-        cropped_image_array = image_array[new_first_pixel[0] : new_last_pixel[0],
-                                          new_first_pixel[1] : new_last_pixel[1]]
+        cropped_image_array = image_array[new_first_pixel[0]: new_last_pixel[0],
+                                          new_first_pixel[1]: new_last_pixel[1]]
     elif dims == 3:
-        cropped_image_array = image_array[new_first_pixel[0] : new_last_pixel[0],
-                                          new_first_pixel[1] : new_last_pixel[1],
-                                          new_first_pixel[2] : new_last_pixel[2]]
+        cropped_image_array = image_array[new_first_pixel[0]: new_last_pixel[0],
+                                          new_first_pixel[1]: new_last_pixel[1],
+                                          new_first_pixel[2]: new_last_pixel[2]]
     if zero_fill_mode:
         cropped_image_array = cropped_image_array*0.
 
@@ -76,33 +78,37 @@ def pad(image_array, final_dims_in_pixels, zero_fill_mode=False):
     """
 
     dims = len(final_dims_in_pixels)
-    original_dims_in_pixels = [image_array.shape[d] for d in range(len(image_array.shape))]
+    original_dims_in_pixels = [image_array.shape[d]
+                               for d in range(len(image_array.shape))]
 
     # test if input and output dimensions match
     if dims != len(original_dims_in_pixels):
         raise ValueError("Dimensions of the input (" + str(len(image_array.shape)) +
-                        ") do not match those of output (" + str(len(final_dims_in_pixels))+ ")")
+                         ") do not match those of output (" + str(len(final_dims_in_pixels)) + ")")
 
     # test if desired final image is larger than original
     if any(final_dims_in_pixels[d] < original_dims_in_pixels[d] for d in range(dims)):
-        raise ValueError("Final dimensions are smaller than original. Did you mean to `crop`?")
+        raise ValueError(
+            "Final dimensions are smaller than original. Did you mean to `crop`?")
 
     padded_image_array = np.zeros(final_dims_in_pixels)
     new_first_image_pixel = [0 for i in range(dims)]
     new_last_image_pixel = [0 for i in range(dims)]
 
     for dim in range(dims):
-        new_first_image_pixel[dim] = int(math.floor((final_dims_in_pixels[dim] - original_dims_in_pixels[dim]) / 2))
-        new_last_image_pixel[dim] = new_first_image_pixel[dim] + original_dims_in_pixels[dim]
+        new_first_image_pixel[dim] = int(math.floor(
+            (final_dims_in_pixels[dim] - original_dims_in_pixels[dim]) / 2))
+        new_last_image_pixel[dim] = new_first_image_pixel[dim] + \
+            original_dims_in_pixels[dim]
 
-    #for 2D:
+    # for 2D:
     if dims == 2:
-        padded_image_array [new_first_image_pixel[0] : new_last_image_pixel[0],
-                            new_first_image_pixel[1] : new_last_image_pixel[1]] = image_array
+        padded_image_array[new_first_image_pixel[0]: new_last_image_pixel[0],
+                           new_first_image_pixel[1]: new_last_image_pixel[1]] = image_array
     elif dims == 3:
-        padded_image_array [new_first_image_pixel[0] : new_last_image_pixel[0],
-                            new_first_image_pixel[1] : new_last_image_pixel[1],
-                            new_first_image_pixel[2] : new_last_image_pixel[2]] = image_array
+        padded_image_array[new_first_image_pixel[0]: new_last_image_pixel[0],
+                           new_first_image_pixel[1]: new_last_image_pixel[1],
+                           new_first_image_pixel[2]: new_last_image_pixel[2]] = image_array
     if zero_fill_mode:
         padded_image_array = padded_image_array*0.
 
@@ -125,14 +131,18 @@ def resample(image_array, goal_pixel_dims_list, is_seg=False):
     # this is done by choosing interpolation order == 0
     order = 0 if is_seg == True else 3
 
-    original_dims_in_pixels = [image_array.shape[d] for d in range(len(image_array.shape))]
-    compression_list = [goal_pixel_dims_list[d] / original_dims_in_pixels[d] for d in range(len(image_array.shape))]
+    original_dims_in_pixels = [image_array.shape[d]
+                               for d in range(len(image_array.shape))]
+    compression_list = [goal_pixel_dims_list[d] / original_dims_in_pixels[d]
+                        for d in range(len(image_array.shape))]
 
     if (is_seg):
-        resized_image = ndimage.interpolation.zoom(image_array, zoom=compression_list, order=order, cval=0)
+        resized_image = ndimage.interpolation.zoom(
+            image_array, zoom=compression_list, order=order, cval=0)
         return resized_image
     else:
-        resized_image = ndimage.interpolation.zoom(image_array, zoom=compression_list, order=order, cval=0)
+        resized_image = ndimage.interpolation.zoom(
+            image_array, zoom=compression_list, order=order, cval=0)
         return resized_image
 
 # Cell
@@ -148,9 +158,10 @@ def resample_by(image_array, compression_factor_list, is_seg=False):
     Returns:
         resampled_image_array (arr): Resampled array containing image data
     """
-    original_dims_in_pixels = [image_array.shape[d] for d in range(len(image_array.shape))]
+    original_dims_in_pixels = [image_array.shape[d]
+                               for d in range(len(image_array.shape))]
     goal_pixel_dims_list = [int(math.floor(compression_factor_list[d] * original_dims_in_pixels[d]))
-                             for d in range(len(image_array.shape))]
+                            for d in range(len(image_array.shape))]
 
     resized_image = resample(image_array, goal_pixel_dims_list, is_seg)
 

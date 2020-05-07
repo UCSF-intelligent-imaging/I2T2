@@ -3,7 +3,7 @@
 __all__ = ['load_dcm', 'load_h5']
 
 # Cell
-from fastscript import call_parse,Param,bool_arg
+from fastscript import call_parse, Param, bool_arg
 from scipy import ndimage
 
 import h5py
@@ -41,10 +41,10 @@ def load_dcm(path_to_dicom_dir=None, sort_by_slice_location=True):
 
     else:
         df = pd.DataFrame()
-        df['filename']= os.listdir(path_to_dicom_dir)
-        df['pathname']= path_to_dicom_dir + df['filename']
+        df['filename'] = os.listdir(path_to_dicom_dir)
+        df['pathname'] = path_to_dicom_dir + df['filename']
 
-        df['DS']=[pydicom.dcmread(x) for x in df['pathname']]
+        df['DS'] = [pydicom.dcmread(x) for x in df['pathname']]
         df['SOPInstanceUID'] = [x.SOPInstanceUID for x in df['DS']]
         df['SliceLoc'] = [x.InstanceNumber for x in df['DS']]
         df['Pixels'] = [x.pixel_array for x in df['DS']]
@@ -74,12 +74,12 @@ def load_h5(path_to_h5_file=None):
         h5_file = h5py.File(path_to_h5_file, 'r')
 
     except:
-        print("File",str(path_to_h5_file),"not found.")
+        print("File", str(path_to_h5_file), "not found.")
         print("Make sure file exists")
 
     else:
         h5_file_dict = dict()
-        keys =h5_file.keys()
+        keys = h5_file.keys()
 
         for k in keys:
             h5_file_dict[k] = h5_file.get(k)

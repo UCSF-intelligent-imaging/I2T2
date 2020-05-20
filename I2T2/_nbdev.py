@@ -3,6 +3,7 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"load_dcm": "00_io.ipynb",
+         "load_mat": "00_io.ipynb",
          "load_h5": "00_io.ipynb",
          "crop": "01_manipulate.ipynb",
          "pad": "01_manipulate.ipynb",

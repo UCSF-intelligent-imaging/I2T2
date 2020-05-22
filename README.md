@@ -54,7 +54,7 @@ python
 
 ```
 # example usage:
-from I2T2.manipulate import *
+from I2T2.io import *
 import matplotlib.pyplot as plt
 
 data_path = '../data/knee/'

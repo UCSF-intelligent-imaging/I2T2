@@ -52,7 +52,7 @@ python
 
 ## Using I2T2
 
-```
+```python
 # example usage:
 from I2T2.io import *
 import matplotlib.pyplot as plt
@@ -68,4 +68,24 @@ except:
 
 
 ![png](docs/images/output_8_0.png)
+
+
+```python
+import I2T2
+```
+
+```python
+import osos.path(I2T2.__file__)
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-5-52cce452d74f> in <module>
+    ----> 1 os.path(I2T2.__file__)
+    
+
+    NameError: name 'os' is not defined
 

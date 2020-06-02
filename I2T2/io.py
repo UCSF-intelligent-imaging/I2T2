@@ -53,7 +53,6 @@ def load_dcm(path_to_dicom_dir=None, sort_by_slice_location=True):
         df['SliceLoc'] = [x.InstanceNumber for x in df['DS']]
         df['Pixels'] = [x.pixel_array for x in df['DS']]
         tempo = df['DS'][0]
-        im_at = tempo.AcquisitionMatrix, tempo.PixelSpacing
 
         if sort_by_slice_location == True:
             df = df.sort_values(by=['SliceLoc'])

@@ -16,7 +16,7 @@ import pydicom
 import scipy.io as spio
 
 # Cell
-def load_dcm(path_to_dicom_dir=None, sort_by_slice_location=True):
+def load_dcm(path_to_dicom_dir=None, sort_by_image_position_patient=True, dicom_extension='.dcm'):
     """
     Loads DICOM data as a numpy array.
 
@@ -35,7 +35,7 @@ def load_dcm(path_to_dicom_dir=None, sort_by_slice_location=True):
         print("Try: conda install -c conda-forge gdcm")
 
     if not path_to_dicom_dir.endswith(('/')):
-        path_to_dicom_dir = f"{data_path}/"
+        path_to_dicom_dir = f"{path_to_dicom_dir}/"
 
     try:
         os.listdir(path_to_dicom_dir)
@@ -48,14 +48,26 @@ def load_dcm(path_to_dicom_dir=None, sort_by_slice_location=True):
         df['filename'] = os.listdir(path_to_dicom_dir)
         df['pathname'] = path_to_dicom_dir + df['filename']
 
-        df['DS'] = [pydicom.dcmread(x) for x in df['pathname']]
-        df['SOPInstanceUID'] = [x.SOPInstanceUID for x in df['DS']]
-        df['SliceLoc'] = [x.InstanceNumber for x in df['DS']]
-        df['Pixels'] = [x.pixel_array for x in df['DS']]
-        tempo = df['DS'][0]
+        df = df[df['pathname'].str.contains(dicom_extension)]
+        ImagePositionPatient = [] # Used to order/sort slices
 
-        if sort_by_slice_location == True:
-            df = df.sort_values(by=['SliceLoc'])
+        result = []
+        df_ = pd.DataFrame(columns=['DS'])
+        for x in df["pathname"]:
+            try:
+                content = pydicom.dcmread(x)
+            except:
+                print('[WARNING] dicom.dcmread(x): Found a file in wrong format. Skipping...')
+                continue
+            result.append(content)
+        df_["DS"] = result
+        df = df_
+
+        df['ImagePositionPatient'] = [x.ImagePositionPatient[0] for x in df['DS']]
+        df['Pixels'] = [x.pixel_array for x in df['DS']]
+
+        if sort_by_image_position_patient == True:
+            df = df.sort_values(by=['ImagePositionPatient'])
         pixel_array = np.dstack(np.asarray(df['Pixels']))
 
         return pixel_array

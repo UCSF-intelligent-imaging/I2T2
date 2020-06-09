@@ -22,8 +22,8 @@ def load_dcm(path_to_dicom_dir=None, sort_by_image_position_patient=True, dicom_
 
     Attributes:
         path_to_dicom_dir (str): Path to folder containing all dicom files for one subject
-        sort_by_slice_location (bool): Whether to return array ordered by slice location
-
+        sort_by_image_position_patient (bool): Whether to return array ordered by slice location
+        dicom_extension (str): string used to search for files within directory (e.g.: .dcm, .DCM, MRDC)
     Returns:
         pixel_array (arr): Array of pixel data
     """

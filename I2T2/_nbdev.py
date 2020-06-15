@@ -2,7 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"load_dcm": "00_io.ipynb",
+index = {"read_dicom_from_file": "00_io.ipynb",
+         "get_tag_from_loaded_dicom": "00_io.ipynb",
+         "dicom_dataframe": "00_io.ipynb",
          "load_mat": "00_io.ipynb",
          "load_h5": "00_io.ipynb",
          "crop": "01_manipulate.ipynb",

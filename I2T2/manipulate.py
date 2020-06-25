@@ -13,6 +13,8 @@ import os
 import pandas as pd
 import pydicom
 
+from .io import *
+
 # Cell
 def crop(image_array, final_dims_in_pixels, zero_fill_mode=False):
     """

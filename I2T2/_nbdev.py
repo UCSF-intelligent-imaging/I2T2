@@ -10,7 +10,8 @@ index = {"read_dicom_from_file": "00_io.ipynb",
          "crop": "01_manipulate.ipynb",
          "pad": "01_manipulate.ipynb",
          "resample": "01_manipulate.ipynb",
-         "resample_by": "01_manipulate.ipynb"}
+         "resample_by": "01_manipulate.ipynb",
+         "resize": "01_manipulate.ipynb"}
 
 modules = ["io.py",
            "manipulate.py"]

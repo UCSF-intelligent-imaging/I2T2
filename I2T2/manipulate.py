@@ -14,6 +14,7 @@ import pandas as pd
 import pydicom
 
 from .io import *
+from .io import _get_tag_from_loaded_dicom
 
 # Cell
 def crop(image_array, final_dims_in_pixels, zero_fill_mode=False):

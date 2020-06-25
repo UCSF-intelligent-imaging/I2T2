@@ -113,7 +113,7 @@ description: "Manipulate performs common image transformations such as cropping,
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test</span>
 <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/knee/&#39;</span>
 <span class="n">dcm_df</span> <span class="o">=</span> <span class="n">dicom_dataframe</span><span class="p">(</span><span class="n">path_to_dicom_dir</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dicom_extension</span><span class="o">=</span><span class="s1">&#39;dcm&#39;</span><span class="p">)</span>
-<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">(</span><span class="n">sort_by_ImagePositionPatient</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">()</span>
 <span class="n">cropped_image</span> <span class="o">=</span> <span class="n">crop</span><span class="p">(</span><span class="n">image_array</span><span class="o">=</span><span class="n">image_array</span><span class="p">,</span>
                      <span class="n">final_dims_in_pixels</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">22</span><span class="p">])</span>
 <span class="n">cropped_zero_image</span> <span class="o">=</span> <span class="n">crop</span><span class="p">(</span><span class="n">image_array</span><span class="o">=</span><span class="n">image_array</span><span class="p">,</span> <span class="n">final_dims_in_pixels</span><span class="o">=</span><span class="p">[</span>
@@ -225,7 +225,7 @@ description: "Manipulate performs common image transformations such as cropping,
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/knee/&#39;</span>
 <span class="n">dcm_df</span> <span class="o">=</span> <span class="n">dicom_dataframe</span><span class="p">(</span><span class="n">path_to_dicom_dir</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dicom_extension</span><span class="o">=</span><span class="s1">&#39;dcm&#39;</span><span class="p">)</span>
 
-<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">(</span><span class="n">sort_by_ImagePositionPatient</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">()</span>
 
 <span class="n">padded_image</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">image_array</span><span class="o">=</span><span class="n">image_array</span><span class="p">,</span>
                    <span class="n">final_dims_in_pixels</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">22</span><span class="p">])</span>
@@ -377,7 +377,7 @@ description: "Manipulate performs common image transformations such as cropping,
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/knee/&#39;</span>
 <span class="n">dcm_df</span> <span class="o">=</span> <span class="n">dicom_dataframe</span><span class="p">(</span><span class="n">path_to_dicom_dir</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dicom_extension</span><span class="o">=</span><span class="s1">&#39;dcm&#39;</span><span class="p">)</span>
 
-<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">(</span><span class="n">sort_by_ImagePositionPatient</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">()</span>
 
 <span class="n">downsampled_image</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">image_array</span><span class="o">=</span><span class="n">image_array</span><span class="p">,</span> <span class="n">target_pixel_dims_list</span><span class="o">=</span><span class="p">[</span>
                              <span class="mi">51</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">22</span><span class="p">],</span> <span class="n">is_seg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -445,7 +445,7 @@ description: "Manipulate performs common image transformations such as cropping,
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/knee/&#39;</span>
 <span class="n">dcm_df</span> <span class="o">=</span> <span class="n">dicom_dataframe</span><span class="p">(</span><span class="n">path_to_dicom_dir</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dicom_extension</span><span class="o">=</span><span class="s1">&#39;dcm&#39;</span><span class="p">)</span>
 
-<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">(</span><span class="n">sort_by_ImagePositionPatient</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">()</span>
 
 <span class="n">downsampled_image</span> <span class="o">=</span> <span class="n">resample_by</span><span class="p">(</span><span class="n">image_array</span><span class="o">=</span><span class="n">image_array</span><span class="p">,</span>
                                 <span class="n">compression_factor_list</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
@@ -516,7 +516,7 @@ description: "Manipulate performs common image transformations such as cropping,
 <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/knee/&#39;</span>
 <span class="n">dcm_df</span> <span class="o">=</span> <span class="n">dicom_dataframe</span><span class="p">(</span><span class="n">path_to_dicom_dir</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dicom_extension</span><span class="o">=</span><span class="s1">&#39;dcm&#39;</span><span class="p">)</span>
 
-<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">(</span><span class="n">sort_by_ImagePositionPatient</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">()</span>
 <span class="n">knee_segmentation</span> <span class="o">=</span> <span class="n">load_h5</span><span class="p">(</span><span class="s1">&#39;../data/knee-segmentation/knee_segmentation.h5&#39;</span><span class="p">)</span>
 <span class="n">knee_segmentation</span> <span class="o">=</span> <span class="n">knee_segmentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;seg&#39;</span><span class="p">)</span>
 
@@ -703,7 +703,7 @@ The returned resampled image has isotropic pixel spacing = 0.5mm</p>
 <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;../data/knee/&#39;</span>
 <span class="n">dcm_df</span> <span class="o">=</span> <span class="n">dicom_dataframe</span><span class="p">(</span><span class="n">path_to_dicom_dir</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dicom_extension</span><span class="o">=</span><span class="s1">&#39;dcm&#39;</span><span class="p">)</span>
 
-<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">(</span><span class="n">sort_by_ImagePositionPatient</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">dcm_df</span><span class="o">.</span><span class="n">get_pixel_data</span><span class="p">()</span>
 <span class="n">knee</span> <span class="o">=</span> <span class="n">load_h5</span><span class="p">(</span><span class="s1">&#39;../data/knee-segmentation/knee_segmentation.h5&#39;</span><span class="p">)</span>
 <span class="n">knee_image</span> <span class="o">=</span> <span class="n">knee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">)</span>
 <span class="n">knee_segmentation</span> <span class="o">=</span> <span class="n">knee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;seg&#39;</span><span class="p">)</span>

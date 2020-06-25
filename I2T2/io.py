@@ -162,7 +162,7 @@ class dicom_dataframe:
 
     def sort_dataframe_by_IPP_normal(self):
         """
-
+        Sort dicoms dataframe by ImagePositionPatient value in the direction of the slice normal
         """
         self.dataframe['ImagePositionPatient_normal'] = self.dataframe['DS'].apply(lambda x: _get_dicom_slice_IPP_along_normal(x))
         self.dataframe = self.dataframe.sort_values('ImagePositionPatient_normal')
@@ -171,8 +171,6 @@ class dicom_dataframe:
     def get_pixel_data(self):
         """
         Get pixel data from dataframe.
-        Attributes:
-            sort_by_ImagePositionPatient (bool)
         Returns:
             pixel_array (arr) numpy array containing pixel data
         """

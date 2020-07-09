@@ -119,8 +119,11 @@ class dicom_dataframe:
         df['filename'] = os.listdir(path_to_dicom_dir)
         df['pathname'] = path_to_dicom_dir + df['filename']
 
-        #select only files containing the desired extension, lower or upper case
-        df = df[df['pathname'].str.contains(dicom_extension.lower())]
+        #select only files containing the desired extension
+        df = df[df['pathname'].str.contains(dicom_extension)]
+        if df.empty:
+            raise ValueError('Empty dataframe! Incorrect dicom extension?')
+
 
         dicom_df = pd.DataFrame(columns=['DS'])
         dicom_df['DS'] = df['pathname'].apply(_read_dicom_from_file)
@@ -174,14 +177,18 @@ class dicom_dataframe:
         Returns:
             pixel_array (arr) numpy array containing pixel data
         """
-        if 'SeriesInstanceUID' not in self.dataframe.columns:
-            print('Warning: SeriesInstanceUID not found in dataset. Unable to check if dicom is single series.')
-
-        elif len(self.dataframe['SeriesInstanceUID'].unique()) > 1:
-            print('Warning: Multiple series found in dataframe. You might want to first select a single series with `select_by_column_and_values`.')
 
         self.dataframe['PixelArray'] = [x.pixel_array for x in self.dataframe['DS']]
-        self.sort_dataframe_by_IPP_normal()
+
+        num_slices = len(self.dataframe)
+        if  num_slices > 1:
+            if 'SeriesInstanceUID' not in self.dataframe.columns:
+                print('Warning: SeriesInstanceUID not found in dataset. Unable to check if dicom is single series.')
+            elif len(self.dataframe['SeriesInstanceUID'].unique()) > 1:
+                print('Warning: Multiple series found in dataframe. You might want to first select a single series with `select_by_column_and_values`.')
+
+            self.sort_dataframe_by_IPP_normal()
+
         pixel_array = np.dstack(np.asarray(self.dataframe.PixelArray))
 
         return(pixel_array)

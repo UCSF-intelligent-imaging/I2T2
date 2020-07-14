@@ -3,6 +3,11 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"dicom_dataframe": "00_io.ipynb",
+         "get_plane": "00_io.ipynb",
+         "is_axial": "00_io.ipynb",
+         "is_sagittal": "00_io.ipynb",
+         "is_coronal": "00_io.ipynb",
+         "is_fat_suppressed": "00_io.ipynb",
          "load_mat": "00_io.ipynb",
          "load_h5": "00_io.ipynb",
          "crop": "01_manipulate.ipynb",

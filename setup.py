@@ -36,10 +36,6 @@ setuptools.setup(
     url = cfg['git_url'],
     packages = setuptools.find_packages(),
     include_package_data = True,
-    package_data={
-        # If any package contains *.dcm files, include them:
-        "": ["*.dcm"]
-    },
     install_requires = requirements,
     dependency_links = cfg.get('dep_links','').split(),
     python_requires  = '>=' + cfg['min_python'],

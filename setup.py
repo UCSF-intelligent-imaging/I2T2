@@ -39,7 +39,7 @@ setuptools.setup(
     package_data={
         # If any package contains *.dcm files, include them:
         "": ["*.dcm"]
-    }
+    },
     install_requires = requirements,
     dependency_links = cfg.get('dep_links','').split(),
     python_requires  = '>=' + cfg['min_python'],

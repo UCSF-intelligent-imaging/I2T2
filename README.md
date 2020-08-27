@@ -4,8 +4,6 @@
 
 Instructions for installation and usage examples can be found below.
 
-You can also check out the documentation at [ucsf-intelligent-imaging.github.io/I2T2](https://ucsf-intelligent-imaging.github.io/I2T2/)
-
 ## Install
 
 It's highly recommended you install `I2T2` and its dependencies in a virtual environment (conda or others), so that you don't interfere with system-wide python packages.

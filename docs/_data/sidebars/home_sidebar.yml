@@ -15,9 +15,6 @@ entries:
     - output: web,pdf
       title: I2T2.manipulate
       url: /manipulate
-    - output: web,pdf
-      title: Title
-      url: /Untitled
     output: web
     title: I2T2
   output: web

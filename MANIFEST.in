@@ -1,3 +1,7 @@
+include I2T2/data/chest-xray/*dcm
+include I2T2/data/knee/*dcm
+include I2T2/data/knee-segmentation/*h5
+
 include settings.ini
 include LICENSE
 include CONTRIBUTING.md

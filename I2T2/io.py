@@ -121,7 +121,7 @@ class dicom_dataframe:
         df['pathname'] = path_to_dicom_dir + df['filename']
 
         #select only files containing the desired extension
-        df = df[df['pathname'].str.lower().str.contains(dicom_extension)]
+        df = df[df['pathname'].str.lower().str.contains(dicom_extension.lower())]
 
         if df.empty:
             raise ValueError('Empty dataframe! Incorrect dicom extension?')

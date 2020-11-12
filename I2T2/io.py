@@ -132,6 +132,15 @@ class dicom_dataframe:
     """
 
     def __init__(self, path_to_dicom_dir, dicom_extension='dcm', read_single_random_dcm=False):
+        """
+        Read dicom files from folder and add them to a pandas dataframe.
+        Attributes:
+            path_to_dicom_dir (str): path to directory containing dicom files
+            dicom_extension (str): cases insensitive string with dicom file extension
+            read_single_random_dcm (bool): whether or not to return a single, random dicom file
+        Returns:
+            updates self.dataframe with new columns.
+        """
         if not path_to_dicom_dir.endswith(('/')):
             path_to_dicom_dir = f"{path_to_dicom_dir}/"
 

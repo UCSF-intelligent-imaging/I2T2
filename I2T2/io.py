@@ -17,6 +17,25 @@ import pydicom
 import scipy.io as spio
 
 # Cell
+def _get_dcm_paths_from_folderpath(path_to_dicom_dir, dicom_extension='DCM'):
+    """
+    Returns a list of paths to dicom files within a directory.
+    Attributes:
+        path_to_dicom_dir (str): path to folder containing dicoms.
+        dicom_extension (str): case insensitive str with dicom extension.
+    Returns:
+        dcm_paths_list (list): list of paths to dicom files.
+    """
+    if not path_to_dicom_dir.endswith(('/')):
+        path_to_dicom_dir = f"{path_to_dicom_dir}/"
+
+    filenames_list = os.listdir(path_to_dicom_dir)
+
+    dcm_paths_list = [os.path.join(path_to_dicom_dir, name) for name in filenames_list if str.lower(dicom_extension) in str.lower(name)]
+
+    return(dcm_paths_list)
+
+# Cell
 def _read_dicom_from_file(dicom_file_path):
     """
     Reads dicom using pydicom.dcmread.
@@ -112,16 +131,21 @@ class dicom_dataframe:
     subsequent filtering, sorting and data loading.
     """
 
-    def __init__(self, path_to_dicom_dir, dicom_extension='dcm'):
+    def __init__(self, path_to_dicom_dir, dicom_extension='dcm', read_single_random_dcm=False):
         if not path_to_dicom_dir.endswith(('/')):
             path_to_dicom_dir = f"{path_to_dicom_dir}/"
 
         df = pd.DataFrame()
-        df['filename'] = os.listdir(path_to_dicom_dir)
-        df['pathname'] = path_to_dicom_dir + df['filename']
+        list_of_paths = _get_dcm_paths_from_folderpath(path_to_dicom_dir, dicom_extension)
 
-        #select only files containing the desired extension
-        df = df[df['pathname'].str.lower().str.contains(dicom_extension.lower())]
+        if read_single_random_dcm:
+            import random
+            list_of_paths = random.sample(list_of_paths, 1)
+
+        df['pathname'] = list_of_paths
+
+        #to get the filenames just remove the path from it
+        df['filename'] = df['pathname'].str.replace(path_to_dicom_dir, '')
 
         if df.empty:
             raise ValueError('Empty dataframe! Incorrect dicom extension?')

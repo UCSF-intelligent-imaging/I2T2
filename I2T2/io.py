@@ -147,24 +147,26 @@ class dicom_dataframe:
         df = pd.DataFrame()
         list_of_paths = _get_dcm_paths_from_folderpath(path_to_dicom_dir, dicom_extension)
 
+        if not list_of_paths:
+            warnings.warn('No dicom found. Incorrect dicom extension?')
+            self.is_empty = True
+            return(None)
+
         if read_single_random_dcm:
             import random
-            list_of_paths = random.sample(list_of_paths, 1)
+            if list_of_paths:
+                list_of_paths = random.sample(list_of_paths, 1)
 
         df['pathname'] = list_of_paths
 
         #to get the filenames just remove the path from it
         df['filename'] = df['pathname'].str.replace(path_to_dicom_dir, '')
 
-        if df.empty:
-            raise ValueError('Empty dataframe! Incorrect dicom extension?')
-
-
         dicom_df = pd.DataFrame(columns=['DS'])
         dicom_df['DS'] = df['pathname'].apply(_read_dicom_from_file)
 
         self.dataframe = dicom_df
-
+        self.is_empty = False
         self.populate_dataframe(['SeriesInstanceUID',
                                 'ImagePositionPatient'])
 
